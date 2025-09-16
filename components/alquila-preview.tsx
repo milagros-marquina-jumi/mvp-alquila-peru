@@ -11,6 +11,7 @@ import {
   TrendingUp
 } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function AlquilaPreview() {
   return (
@@ -24,6 +25,44 @@ export default function AlquilaPreview() {
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Conectamos propietarios e inquilinos de manera segura y eficiente en todo el país
           </p>
+        </div>
+
+        {/* Imagen destacada */}
+        <div className="relative mb-16">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="relative">
+              <Image
+                src="/modern-apartment-living-room.png"
+                alt="Moderno apartamento - Alquila Perú"
+                width={600}
+                height={400}
+                className="rounded-2xl shadow-lg object-cover w-full h-[300px] md:h-[400px]"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
+            </div>
+            <div className="space-y-6">
+              <div className="inline-flex items-center px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium">
+                ✨ Más de 2,500 propiedades verificadas
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900">
+                Encuentra tu hogar ideal en minutos
+              </h3>
+              <p className="text-lg text-gray-600">
+                Desde acogedores departamentos hasta amplias casas familiares. 
+                Nuestra plataforma te ayuda a encontrar exactamente lo que buscas 
+                con filtros inteligentes y búsqueda personalizada.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Button asChild className="bg-green-600 hover:bg-green-700">
+                  <Link href="#propiedades">Ver Propiedades</Link>
+                </Button>
+                <Button asChild variant="outline">
+                  <Link href="/auth/select-profile">Registrarse Gratis</Link>
+                </Button>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Estadísticas */}
@@ -129,20 +168,34 @@ export default function AlquilaPreview() {
         </div>
 
         {/* Call to action final */}
-        <div className="text-center bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl p-8">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">
-            ¿Listo para comenzar?
-          </h3>
-          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            Únete a miles de peruanos que ya encontraron su hogar ideal o inquilino perfecto
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-green-600 hover:bg-green-700">
-              <Link href="/auth/select-profile">Empezar Ahora</Link>
-            </Button>
-            <Button asChild variant="outline" size="lg">
-              <Link href="#propiedades">Ver Propiedades</Link>
-            </Button>
+        <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl overflow-hidden">
+          <div className="grid md:grid-cols-2 gap-0">
+            <div className="p-8 md:p-12 flex flex-col justify-center">
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+                ¿Listo para comenzar?
+              </h3>
+              <p className="text-gray-600 mb-6 text-lg">
+                Únete a miles de peruanos que ya encontraron su hogar ideal o inquilino perfecto
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button asChild size="lg" className="bg-green-600 hover:bg-green-700">
+                  <Link href="/auth/select-profile">Empezar Ahora</Link>
+                </Button>
+                <Button asChild variant="outline" size="lg">
+                  <Link href="#propiedades">Ver Propiedades</Link>
+                </Button>
+              </div>
+            </div>
+            <div className="relative h-64 md:h-auto">
+              <Image
+                src="/family-house-garden.png"
+                alt="Casa familiar con jardín - Alquila Perú"
+                width={500}
+                height={400}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-l from-transparent to-green-50/20"></div>
+            </div>
           </div>
         </div>
       </div>
