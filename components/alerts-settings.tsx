@@ -8,7 +8,7 @@ import { Switch } from "@/components/ui/switch"
 import { Textarea } from "@/components/ui/textarea"
 import { MessageCircle, Mail, Save, TestTube } from "lucide-react"
 import { useState } from "react"
-import { supabase } from "@/lib/supabase/client"
+import { supabase, isSupabaseConfigured } from "@/lib/supabase/client"
 import { useRouter } from "next/navigation"
 import { useToast } from "@/hooks/use-toast"
 
@@ -37,6 +37,14 @@ export default function AlertsSettings({ settings }: AlertsSettingsProps) {
   })
 
   const handleSave = async () => {
+    if (!isSupabaseConfigured || !supabase) {
+      toast({
+        title: "Simulación",
+        description: "Configuración guardada (modo desarrollo)",
+      })
+      return
+    }
+
     setIsLoading(true)
 
     const { error } = await supabase.from("alert_settings").update(formData).eq("id", settings.id)

@@ -175,6 +175,117 @@ export const mockProperties = [
   },
 ]
 
+export const mockTenants = [
+  {
+    id: "tenant-1",
+    full_name: "María García López",
+    email: "maria.garcia@email.com",
+    phone: "987654321",
+    dni: "12345678",
+    occupation: "Ingeniera de Sistemas",
+    emergency_contact: "Ana García - 956123456",
+    created_at: "2024-01-15T10:00:00Z",
+  },
+  {
+    id: "tenant-2",
+    full_name: "Carlos Roberto Mendoza",
+    email: "carlos.mendoza@email.com",
+    phone: "987123456",
+    dni: "87654321",
+    occupation: "Gerente de Ventas",
+    emergency_contact: "Rosa Mendoza - 945678123",
+    created_at: "2024-02-20T10:00:00Z",
+  },
+  {
+    id: "tenant-3",
+    full_name: "Ana Sofia Ruiz",
+    email: "ana.ruiz@email.com",
+    phone: "987789456",
+    dni: "45678912",
+    occupation: "Doctora",
+    emergency_contact: "Luis Ruiz - 934567890",
+    created_at: "2024-03-10T10:00:00Z",
+  }
+]
+
+export const mockContracts = [
+  {
+    id: "contract-1",
+    property_id: "prop-2",
+    tenant_id: "tenant-1",
+    start_date: "2024-01-01",
+    end_date: "2024-12-31",
+    monthly_rent: 3200,
+    deposit: 3200,
+    contract_status: "active" as const,
+    contract_type: "annual",
+    payment_day: 1,
+    late_fee: 100,
+    notes: "Contrato anual renovable. Incluye mantenimiento de jardín.",
+    created_at: "2023-12-15T10:00:00Z",
+    properties: {
+      title: "Casa Familiar en La Molina",
+      address: "Calle Los Eucaliptos 567",
+      district: "La Molina"
+    },
+    tenants: {
+      full_name: "María García López",
+      email: "maria.garcia@email.com",
+      phone: "987654321"
+    }
+  },
+  {
+    id: "contract-2",
+    property_id: "prop-4",
+    tenant_id: "tenant-2",
+    start_date: "2024-03-01",
+    end_date: "2025-02-28",
+    monthly_rent: 1800,
+    deposit: 1800,
+    contract_status: "active" as const,
+    contract_type: "annual",
+    payment_day: 5,
+    late_fee: 80,
+    notes: "Oficina comercial con opción de renovación automática.",
+    created_at: "2024-02-15T10:00:00Z",
+    properties: {
+      title: "Oficina Comercial en San Borja",
+      address: "Av. San Borja Norte 456",
+      district: "San Borja"
+    },
+    tenants: {
+      full_name: "Carlos Roberto Mendoza",
+      email: "carlos.mendoza@email.com",
+      phone: "987123456"
+    }
+  },
+  {
+    id: "contract-3",
+    property_id: "prop-1",
+    tenant_id: "tenant-3",
+    start_date: "2024-06-01",
+    end_date: "2024-11-30",
+    monthly_rent: 2500,
+    deposit: 2500,
+    contract_status: "expired" as const,
+    contract_type: "short_term",
+    payment_day: 15,
+    late_fee: 75,
+    notes: "Contrato de corta duración por trabajo temporal.",
+    created_at: "2024-05-20T10:00:00Z",
+    properties: {
+      title: "Departamento Moderno en San Isidro",
+      address: "Av. Javier Prado Este 1234",
+      district: "San Isidro"
+    },
+    tenants: {
+      full_name: "Ana Sofia Ruiz",
+      email: "ana.ruiz@email.com",
+      phone: "987789456"
+    }
+  }
+]
+
 export const mockStats = {
   totalProperties: 5,
   availableProperties: 3,

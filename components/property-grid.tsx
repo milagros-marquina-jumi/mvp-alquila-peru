@@ -10,12 +10,13 @@ interface SearchParams {
   status?: string
 }
 
-export default async function PropertyGrid({ searchParams }: { searchParams: SearchParams }) {
+export default async function PropertyGrid({ searchParams }: { searchParams: Promise<SearchParams> }) {
+  const params = await searchParams
   let properties = mockProperties.filter((property) => property.is_visible)
 
   // Apply filters to mock data
-  if (searchParams.search) {
-    const searchTerm = searchParams.search.toLowerCase()
+  if (params.search) {
+    const searchTerm = params.search.toLowerCase()
     properties = properties.filter(
       (property) =>
         property.title.toLowerCase().includes(searchTerm) ||
@@ -24,24 +25,24 @@ export default async function PropertyGrid({ searchParams }: { searchParams: Sea
     )
   }
 
-  if (searchParams.type) {
-    properties = properties.filter((property) => property.property_type === searchParams.type)
+  if (params.type) {
+    properties = properties.filter((property) => property.property_type === params.type)
   }
 
-  if (searchParams.district) {
-    properties = properties.filter((property) => property.district === searchParams.district)
+  if (params.district) {
+    properties = properties.filter((property) => property.district === params.district)
   }
 
-  if (searchParams.minPrice) {
-    properties = properties.filter((property) => property.monthly_rent >= Number.parseFloat(searchParams.minPrice))
+  if (params.minPrice) {
+    properties = properties.filter((property) => property.monthly_rent >= Number.parseFloat(params.minPrice!))
   }
 
-  if (searchParams.maxPrice) {
-    properties = properties.filter((property) => property.monthly_rent <= Number.parseFloat(searchParams.maxPrice))
+  if (params.maxPrice) {
+    properties = properties.filter((property) => property.monthly_rent <= Number.parseFloat(params.maxPrice!))
   }
 
-  if (searchParams.status) {
-    properties = properties.filter((property) => property.status === searchParams.status)
+  if (params.status) {
+    properties = properties.filter((property) => property.status === params.status)
   }
 
   if (!properties || properties.length === 0) {

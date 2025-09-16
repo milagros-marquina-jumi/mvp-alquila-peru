@@ -6,7 +6,7 @@ import HeroSection from "@/components/hero-section"
 export default async function HomePage({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | string[] | undefined }
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
   return (
     <div className="min-h-screen bg-gray-50">

@@ -8,7 +8,7 @@ import { Eye, Edit, Trash2, MapPin, Plus } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
-import { supabase } from "@/lib/supabase/client"
+import { supabase, isSupabaseConfigured } from "@/lib/supabase/client"
 import { useRouter } from "next/navigation"
 
 interface Property {
@@ -59,6 +59,11 @@ export default function PropertiesTable({ properties }: PropertiesTableProps) {
   }
 
   const togglePublished = async (propertyId: string, currentStatus: boolean) => {
+    if (!isSupabaseConfigured || !supabase) {
+      console.warn("Supabase not configured, simulating toggle")
+      return
+    }
+
     setUpdatingProperty(propertyId)
 
     const { error } = await supabase.from("properties").update({ is_published: !currentStatus }).eq("id", propertyId)
