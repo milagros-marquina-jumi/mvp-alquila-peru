@@ -2,6 +2,7 @@ import { Suspense } from "react"
 import PropertyGrid from "@/components/property-grid"
 import SearchFilters from "@/components/search-filters"
 import HeroSection from "@/components/hero-section"
+import AlquilaPreview from "@/components/alquila-preview"
 
 export default async function HomePage({
   searchParams,
@@ -11,8 +12,10 @@ export default async function HomePage({
   return (
     <div className="min-h-screen bg-gray-50">
       <HeroSection />
+      
+      <AlquilaPreview />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12" id="propiedades">
         <div className="mb-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Propiedades Disponibles</h2>
           <p className="text-lg text-gray-600">Encuentra tu próximo hogar o inversión</p>
